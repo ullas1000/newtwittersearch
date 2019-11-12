@@ -1,0 +1,65 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+hr{
+  border-top: 1px solid #4d90fe !important;
+}
+span
+{
+  color:#4d90fe !important;
+}
+.imgsize{
+  width: 50px !important;
+  height: 50px;
+  margin: 12px 8px auto;
+}
+.custombody
+{
+  padding: 0rem !important;
+}
+.message
+{
+  height: 20px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+.card-body
+{
+  margin: -16px 0 -12px -43px !important; 
+}
+.no-gutters
+{
+  box-shadow: 1px 1px 3px #888888;
+}
+.tweetContainer{  
+height: 400px;
+overflow: auto;
+margin-top: 15px;
+}
+.tweetContainer .media {
+  background: #fff;
+  box-shadow: 1px 1px 7px rgba(100,100,100,0.5);
+  margin: 10px 0;
+  border-radius: 5px;
+  padding: 10px;
+}
+
