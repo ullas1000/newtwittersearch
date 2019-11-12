@@ -119,7 +119,7 @@ class Search extends Component {
                                     dataLength={this.state.data.length}
                                     next={this.fetchMoreData}
                                     hasMore={this.state.hasMore}
-                                    loader={<h4>Loading...</h4>}
+                                    loader={this.state.data.length>0?<h4>Loading...</h4>:''}
                                     height={400}
                                     endMessage={
                                         <p style={{ textAlign: "center" }}>
