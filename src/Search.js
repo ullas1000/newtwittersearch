@@ -9,13 +9,13 @@ import {
     Switch,
     Route // for later
 } from 'react-router-dom'
-import './css/bootstrap.min.css';
+//import './css/bootstrap.min.css';
 
 class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            seconds: 30, data: [],hasMore:true
+            seconds: 30, data: [], hasMore: true
         }
         this.tick = this.tick.bind(this);
         this.searchQuery = this.searchQuery.bind(this);
@@ -30,7 +30,7 @@ class Search extends Component {
         // a fake async api call like which sends
         // 20 more records in .5 secs
         setTimeout(() => {
-            debugger
+
             this.setState({
                 data: this.state.data.concat(Array.from({ length: 2 }))
             });
@@ -49,6 +49,11 @@ class Search extends Component {
         // document.getElementById("sp").textContent = a;
 
     }
+    sum() {
+        return Array.prototype.reduce.call(arguments, function (a, b) {
+            return a + b;
+        }, 0);
+    }
     componentDidMount() {
 
         if (this.props.history.location.pathname.split('/key=')[1] != undefined) {
@@ -59,10 +64,11 @@ class Search extends Component {
 
     }
     searchQuery(query) {
+
         var that = this;
         axios.get('https://aravindtwitter.herokuapp.com/twittersearch?key=' + query)
             .then(function (response) {
-                debugger;
+                ;
                 that.setState({ data: response.data.statuses, seconds: 30 })
                 console.log(response);
             })
@@ -83,28 +89,25 @@ class Search extends Component {
         return (
             <div>
                 <div className="container">
-
                     <div className="row">
-
-                        <div className="col-md-12">
+                        <div className="desk-12 tablet-12">
                             <br />
                             <div className="row">
-                                <div className="col-md-6  col-sm-6">
+                                <div className="header-6">
                                     <span>Search @ Twitter</span>
                                 </div>
-                                <div className="col-md-6 col-sm-6 text-right">
+                                <div className="header-6 text-right">
                                     <span className="float-right">Auto refresh in {this.state.seconds} seconds</span>
                                 </div>
                             </div>
 
                             <hr size="30" />
                             <div className="row">
-                                <div className="col-md-3 col-sm-3"></div>
-                                <div className="col-md-6 col-sm-6">
-                                    <input type="text" className="form-control" ref="txtQuery" />
-                                </div>
-                                <div className="col-md-3 col-sm-3">
-                                    <input type="button" className="btn btn-primary" value="Search" onClick={this.btnClick} />
+                                <div className="tablet-search">
+                                    <input type="text" className="textbox" ref="txtQuery" />
+                                    <div className="tablet-button">
+                                        <input type="button" className="btn" value="Search" onClick={this.btnClick} />
+                                    </div>
                                 </div>
                             </div>
 
@@ -113,9 +116,9 @@ class Search extends Component {
                     <br />
                     <div className="row">
                         <br />
-                        <div className="col-md-12 tweetContainer">
+                        <div className="desk-12 tweetContainer">
                             <div className="row">
-                                <InfiniteScroll
+                                {/* <InfiniteScroll
                                     dataLength={this.state.data.length}
                                     next={this.fetchMoreData}
                                     hasMore={this.state.hasMore}
@@ -126,25 +129,25 @@ class Search extends Component {
                                             <b>Yay! You have seen it all</b>
                                         </p>
                                     }
-                                >
-                                    <Tweets tweetlist={this.state.data} />
-                                    </InfiniteScroll>
-                            </div>
+                                > */}
+                                <Tweets tweetlist={this.state.data} />
+                                {/* </InfiniteScroll> */}
                             </div>
                         </div>
                     </div>
                 </div>
-                );
-            }
-        }
+            </div>
+        );
+    }
+}
 
-        export default Search;
+export default Search;
 
 class Tweets extends Component {
-                    constructor(props) {
-                    super(props)
-                }
-                renderTweets() {
+    constructor(props) {
+        super(props)
+    }
+    renderTweets() {
 
 
         var that = this
@@ -152,7 +155,7 @@ class Tweets extends Component {
 
             return this.props.tweetlist.map(function (x) {
 
-                return (<LazyLoad><div className="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                return (<div className="desk-12 tablet-6">
                     <div className="media">
                         <div className="media-left">
                             <a href="#">
@@ -164,16 +167,16 @@ class Tweets extends Component {
                             <p className="message">{x.text}</p>
                         </div>
                     </div>
-                </div></LazyLoad>)
+                </div>)
             })
         }
         else {
 
-                }
-                }
+        }
+    }
     render() {
-        return (<div>
-                    {this.renderTweets()}
-                </div>)
-            }
+        return (<>
+            {this.renderTweets()}
+        </>)
+    }
 }
