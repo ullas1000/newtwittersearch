@@ -118,7 +118,7 @@ class Search extends Component {
                         <br />
                         <div className="desk-12 tweetContainer">
                             <div className="row">
-                                {/* <InfiniteScroll
+                                <InfiniteScroll
                                     dataLength={this.state.data.length}
                                     next={this.fetchMoreData}
                                     hasMore={this.state.hasMore}
@@ -129,9 +129,9 @@ class Search extends Component {
                                             <b>Yay! You have seen it all</b>
                                         </p>
                                     }
-                                > */}
+                                > 
                                 <Tweets tweetlist={this.state.data} />
-                                {/* </InfiniteScroll> */}
+                                 </InfiniteScroll> 
                             </div>
                         </div>
                     </div>
